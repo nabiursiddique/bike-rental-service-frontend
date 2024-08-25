@@ -2,17 +2,19 @@ import { Button } from '@/components/ui/button';
 
 const Footer = () => {
   return (
-    <footer className='bg-white'>
+    <footer className='bg-white font-[oswald]'>
       <hr />
       <div className='mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8'>
         <div className='lg:grid lg:grid-cols-2'>
           <div className='border-b border-gray-100 py-8 lg:order-last lg:border-b-0 lg:border-s lg:py-16 lg:ps-16'>
             <div className='block text-teal-600 lg:hidden'>
-              <h1 className='text-3xl font-bold text-lime-500'>Bike Rental</h1>
+              <h1 className='text-3xl font-bold text-orange-500'>
+                Bike Rental
+              </h1>
             </div>
 
             <div className='mt-8 space-y-4 lg:mt-0'>
-              <span className='hidden h-1 w-10 rounded bg-lime-500 lg:block'></span>
+              <span className='hidden h-1 w-10 rounded bg-orange-500 lg:block'></span>
 
               <div>
                 <h2 className='text-2xl font-medium text-gray-900'>
@@ -48,7 +50,7 @@ const Footer = () => {
 
           <div className='py-8 lg:py-8 lg:pe-16'>
             <div className='hidden text-teal-600 lg:block'>
-              <h1 className='text-3xl font-extrabold text-lime-400'>
+              <h1 className='text-3xl font-extrabold text-orange-400'>
                 Bike Rental
               </h1>
             </div>

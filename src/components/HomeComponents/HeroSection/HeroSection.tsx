@@ -2,8 +2,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import sliderImage1 from '@/assets/images/Banner Images/carousel-image-1.jpg';
@@ -24,7 +22,7 @@ const HeroSection = () => {
           }),
         ]}
       >
-        <CarouselContent>
+        <CarouselContent className='font-[oswald]'>
           <CarouselItem>
             <div className='relative w-full lg:h-[100vh] h-[60vh]'>
               <div
@@ -33,15 +31,18 @@ const HeroSection = () => {
               ></div>
               <div className='absolute inset-0 bg-black opacity-50'></div>
               <div className='relative z-10 lg:w-[60%] md:w-[80%] lg:top-40 top-20 lg:left-14 left-10 flex flex-col lg:items-start md:items-center lg:ml-7 rounded-lg'>
-                <h1 className='lg:text-4xl font-sans font-extrabold text-white'>
+                <h1 className='lg:text-4xl font-extrabold text-white'>
                   Rent Your Favorite <br />
                 </h1>
-                <h1 className='lg:text-7xl text-4xl font-sans font-extrabold text-white my-2'>
-                  <span className='text-lime-400'> Motor Bikes </span> With{' '}
-                  <span className='text-lime-400'>30% </span>Discount
+                <h1 className='lg:text-7xl text-4xl font-extrabold text-white my-2'>
+                  <span className='text-orange-400'> Motor Bikes </span> With{' '}
+                  <br />
+                  <span className='text-orange-400'>30% </span>Discount
                   <br />
                 </h1>
-                <Button className='bg-lime-400'>Book Now</Button>
+                <div className='w-1/5'>
+                  <Button className='bg-orange-400'>Book Now</Button>
+                </div>
               </div>
             </div>
           </CarouselItem>
@@ -53,21 +54,23 @@ const HeroSection = () => {
               ></div>
               <div className='absolute inset-0 bg-black opacity-50'></div>
               <div className='relative z-10 lg:w-[60%] md:w-[80%] lg:top-40 top-20 lg:left-14 left-10 flex flex-col lg:items-start md:items-center lg:ml-7 rounded-lg'>
-                <h1 className='lg:text-4xl font-sans font-extrabold text-white'>
+                <h1 className='lg:text-4xl font-extrabold text-white'>
                   Special Offers <br />
                 </h1>
-                <h1 className='lg:text-7xl text-4xl font-sans font-extrabold text-white my-2'>
-                  <span className='text-lime-400'> 100 % Off </span> <br /> on
+                <h1 className='lg:text-7xl text-4xl font-extrabold text-white my-2'>
+                  <span className='text-orange-400'> 100 % Off </span> <br /> on
                   01 April
                   <br />
                 </h1>
-                <Button className='bg-lime-400'>Book Now</Button>
+                <div className='w-1/5'>
+                  <Button className='bg-orange-400'>Book Now</Button>
+                </div>
               </div>
             </div>
           </CarouselItem>
         </CarouselContent>
-        <CarouselPrevious className='lg:ml-[80px] ml-[50px]' />
-        <CarouselNext className='lg:mr-[80px] mr-[50px]' />
+        {/* <CarouselPrevious className='lg:ml-[80px] ml-[50px]' />
+        <CarouselNext className='lg:mr-[80px] mr-[50px]' /> */}
       </Carousel>
     </div>
   );
