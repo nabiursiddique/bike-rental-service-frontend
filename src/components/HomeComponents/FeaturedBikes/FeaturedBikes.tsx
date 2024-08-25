@@ -13,7 +13,7 @@ const FeaturedBikes = () => {
   const { data, isLoading } = useGetAllBikesQuery(undefined);
   const bikes = data?.data;
   return (
-    <div className='mt-10 font-[oswald] lg:px-20'>
+    <div className='mt-20 font-[oswald] lg:px-20'>
       <div>
         <div className='flex justify-center'>
           <img src={bikeLogo} alt='' />
