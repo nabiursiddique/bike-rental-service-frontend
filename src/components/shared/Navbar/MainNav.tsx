@@ -20,7 +20,7 @@ export default function MainNav() {
             About Us
           </Button>
         </NavLink>
-        <NavLink to={'/dashboard/add-bike'}>
+        <NavLink to={'/dashboard'}>
           <Button variant='link' className='hover:text-lime-500'>
             Dashboard
           </Button>
