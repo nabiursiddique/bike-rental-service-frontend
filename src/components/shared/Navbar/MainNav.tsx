@@ -13,32 +13,32 @@ export const MainNav = () => {
       </div>
       <nav id='navbar' className='flex gap-2'>
         <NavLink to={'/'}>
-          <Button variant='link' className='hover:text-orange-500'>
+          <Button variant='link' className='hover:text-orange-500 text-xl'>
             Home
           </Button>
         </NavLink>
         <NavLink to={'/about-us'}>
-          <Button variant='link' className='hover:text-orange-500'>
+          <Button variant='link' className='hover:text-orange-500 text-xl'>
             About Us
           </Button>
         </NavLink>
         <NavLink to={'/dashboard'}>
-          <Button variant='link' className='hover:text-orange-500'>
+          <Button variant='link' className='hover:text-orange-500 text-xl'>
             Dashboard
           </Button>
         </NavLink>
         <NavLink to={'/all-bikes'}>
-          <Button variant='link' className='hover:text-orange-500'>
+          <Button variant='link' className='hover:text-orange-500 text-xl'>
             All Bikes
           </Button>
         </NavLink>
         <NavLink to={'/signUp'}>
-          <Button variant='link' className='hover:text-orange-500'>
+          <Button variant='link' className='hover:text-orange-500 text-xl'>
             Sign Up
           </Button>
         </NavLink>
         <NavLink to={'/signIn'}>
-          <Button variant='link' className='hover:text-orange-500'>
+          <Button variant='link' className='hover:text-orange-500 text-xl'>
             Sign In
           </Button>
         </NavLink>

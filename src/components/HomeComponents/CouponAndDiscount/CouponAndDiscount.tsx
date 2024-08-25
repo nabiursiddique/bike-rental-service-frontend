@@ -5,7 +5,7 @@ const promotions = [
     code: 'SUMMER20',
     description: 'Get 20% off on all bike rentals this summer!',
     expiry: 'Expires: August 31, 2024',
-    icon: <FaTicketAlt className='w-8 h-8 text-red-500' />,
+    icon: <FaTicketAlt className='w-8 h-8 text-orange-500' />,
   },
   {
     code: 'FIRSTRIDE',

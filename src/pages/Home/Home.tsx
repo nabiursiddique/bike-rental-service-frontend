@@ -1,3 +1,5 @@
+import GoToTopButton from '@/components/CommontComponents/GoToTopButton';
+import ContactUs from '@/components/HomeComponents/ContactUs/ContactUs';
 import CouponsAndDiscount from '@/components/HomeComponents/CouponAndDiscount/CouponAndDiscount';
 import FeaturedBikes from '@/components/HomeComponents/FeaturedBikes/FeaturedBikes';
 import HeroSection from '@/components/HomeComponents/HeroSection/HeroSection';
@@ -12,6 +14,8 @@ const Home = () => {
       <Testimonials />
       <WhyChooseUs />
       <CouponsAndDiscount />
+      <ContactUs />
+      <GoToTopButton />
     </div>
   );
 };

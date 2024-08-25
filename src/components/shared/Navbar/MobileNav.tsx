@@ -19,7 +19,7 @@ export default function MobileNav() {
         </Link>
       </div>
       <SheetContent side='left'>
-        <nav className='flex flex-col items-start'>
+        <nav className='flex flex-col items-start font-[oswald]'>
           <SheetTrigger asChild>
             <NavLink to={'/'}>
               <Button variant='link' className='hover:text-orange-500'>
