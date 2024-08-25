@@ -51,7 +51,8 @@ const Testimonials = () => {
           <img src={bikeLogo} alt='' />
         </div>
         <h1 className='lg:text-5xl text-2xl font-semibold uppercase lg:mt-5 text-center'>
-          Testimonials
+          <span className='text-orange-600'>❝</span> Testimonials{' '}
+          <span className='text-orange-600'>❞</span>
         </h1>
       </div>
 
@@ -81,7 +82,9 @@ const Testimonials = () => {
                     className='w-24 h-24 rounded-full mb-4'
                   />
                   <p className='text-lg italic text-center text-gray-700 mb-4'>
-                    "{testimonial.feedback}"
+                    <span className='text-orange-600'>" </span>
+                    {testimonial.feedback}
+                    <span className='text-orange-600'> "</span>
                   </p>
                   <p className='font-semibold text-gray-900'>
                     {testimonial.name}
