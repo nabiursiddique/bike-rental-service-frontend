@@ -50,7 +50,7 @@ const Testimonials = () => {
         <div className='flex justify-center'>
           <img src={bikeLogo} alt='' />
         </div>
-        <h1 className='lg:text-5xl text-2xl font-semibold uppercase lg:mt-5 text-center'>
+        <h1 className='lg:text-5xl text-3xl font-semibold uppercase lg:mt-5 text-center'>
           <span className='text-orange-600'>❝</span> Testimonials{' '}
           <span className='text-orange-600'>❞</span>
         </h1>
@@ -71,7 +71,7 @@ const Testimonials = () => {
         >
           <CarouselContent>
             {testimonials.map((testimonial, index) => (
-              <CarouselItem className='pl-1 md:basis-1/2 lg:basis-1/3'>
+              <CarouselItem className='md:basis-1/2 lg:basis-1/3'>
                 <div
                   key={index}
                   className='flex flex-col items-center p-6 bg-white rounded-lg shadow-lg border border-orange-600'
@@ -94,8 +94,8 @@ const Testimonials = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className='ml-7 lg:ml-3 bg-orange-600 text-white' />
-          <CarouselNext className='mr-7 lg:mr-3 bg-orange-600 text-white' />
+          <CarouselPrevious className='ml-10 lg:ml-3 bg-orange-600 text-white' />
+          <CarouselNext className='mr-10 lg:mr-3 bg-orange-600 text-white' />
         </Carousel>
       </div>
     </div>

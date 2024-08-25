@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
         <div className='flex justify-center'>
           <img src={bikeLogo} alt='' />
         </div>
-        <h1 className='lg:text-5xl text-2xl font-semibold uppercase lg:mt-5 text-center'>
+        <h1 className='lg:text-5xl text-3xl font-semibold uppercase lg:mt-5 text-center'>
           Why Choose Us
           <span className='text-orange-600 lg:text-6xl text-3xl'>?</span>
         </h1>

@@ -1,3 +1,4 @@
+import CouponsAndDiscount from '@/components/HomeComponents/CouponAndDiscount/CouponAndDiscount';
 import FeaturedBikes from '@/components/HomeComponents/FeaturedBikes/FeaturedBikes';
 import HeroSection from '@/components/HomeComponents/HeroSection/HeroSection';
 import Testimonials from '@/components/HomeComponents/Testimonials/Testimonials';
@@ -10,6 +11,7 @@ const Home = () => {
       <FeaturedBikes />
       <Testimonials />
       <WhyChooseUs />
+      <CouponsAndDiscount />
     </div>
   );
 };

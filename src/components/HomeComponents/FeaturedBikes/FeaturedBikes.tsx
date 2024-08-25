@@ -18,7 +18,7 @@ const FeaturedBikes = () => {
         <div className='flex justify-center'>
           <img src={bikeLogo} alt='' />
         </div>
-        <h1 className='lg:text-5xl text-2xl font-semibold uppercase lg:mt-5 text-center'>
+        <h1 className='lg:text-5xl text-3xl font-semibold uppercase lg:mt-5 text-center'>
           Available Bikes
         </h1>
       </div>
