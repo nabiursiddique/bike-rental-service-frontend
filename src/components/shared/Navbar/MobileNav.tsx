@@ -33,7 +33,7 @@ export default function MobileNav() {
             </NavLink>
           </SheetTrigger>
           <SheetTrigger asChild>
-            <NavLink to={'/dashboard'}>
+            <NavLink to={'/dashboard/add-bike'}>
               <Button variant='link' className='hover:text-lime-500'>
                 Dashboard
               </Button>
