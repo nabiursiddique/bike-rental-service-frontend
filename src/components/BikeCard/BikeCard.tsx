@@ -104,7 +104,7 @@ const BikeCard: FC<BikeCardProps> = ({
         </div>
         <Link
           to={`/bike-details/${id}`}
-          className='text-on-dark bg-green-600 text-center text-sm font-bold py-2 px-4 smoothingAnimation hover:bg-green-700 transition-colors duration-300'
+          className='text-on-dark bg-orange-600 text-center text-sm font-bold py-2 px-4 smoothingAnimation hover:bg-orange-700 transition-colors duration-300'
         >
           View Details
         </Link>
