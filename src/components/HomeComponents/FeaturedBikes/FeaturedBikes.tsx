@@ -8,7 +8,7 @@ import {
 import bikeLogo from '../../../assets/icons/Bike logo.png';
 import { useGetAllBikesQuery } from '@/redux/features/bikes/bikes.api';
 import BikeCard from '@/components/BikeCard/BikeCard';
-import Loading from '@/components/CommontComponents/Loading';
+import Loading from '@/components/CommonComponents/Loading';
 
 const FeaturedBikes = () => {
   const { data, isLoading } = useGetAllBikesQuery(undefined);
@@ -41,19 +41,22 @@ const FeaturedBikes = () => {
                   ))
               : bikes &&
                 bikes.map(
-                  (bike: {
-                    _id: string;
-                    name: string;
-                    isAvailable: boolean;
-                    description: string;
-                    brand: string;
-                    model: string;
-                    year: number;
-                    cc: number;
-                    pricePerHour: number;
-                  }) => (
+                  (
+                    bike: {
+                      _id: string;
+                      name: string;
+                      isAvailable: boolean;
+                      description: string;
+                      brand: string;
+                      model: string;
+                      year: number;
+                      cc: number;
+                      pricePerHour: number;
+                    },
+                    index: string
+                  ) => (
                     <CarouselItem
-                      key={bike._id}
+                      key={index}
                       className='pl-1 md:basis-1/2 lg:basis-1/3'
                     >
                       <BikeCard
