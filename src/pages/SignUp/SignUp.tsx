@@ -30,13 +30,17 @@ const SignUp = () => {
     handleSubmit,
     setValue,
     formState: { errors },
+    reset,
   } = useForm<TUserInput>({
     defaultValues: {
       role: 'user', // Set default role to 'user'
     },
   });
 
-  const handleSignUp: SubmitHandler<TUserInput> = (data) => console.log(data);
+  const handleSignUp: SubmitHandler<TUserInput> = (data) => {
+    console.log(data);
+    reset();
+  };
 
   const [showPassword, setShowPassword] = useState(false);
 
