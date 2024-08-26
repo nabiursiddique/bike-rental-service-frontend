@@ -1,4 +1,4 @@
-import { PiMicrosoftTeamsLogoLight } from 'react-icons/pi';
+import { IoMdContacts } from 'react-icons/io';
 
 const OurTeam = () => {
   return (
@@ -6,7 +6,7 @@ const OurTeam = () => {
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <div className='mb-7'>
           <div className='flex justify-center'>
-            <PiMicrosoftTeamsLogoLight className='text-5xl font-extrabold text-orange-600' />
+            <IoMdContacts className='text-5xl font-extrabold text-orange-600' />
           </div>
           <h1 className='lg:text-5xl text-3xl font-semibold uppercase lg:mt-2 text-center'>
             Our Team

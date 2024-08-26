@@ -1,6 +1,7 @@
 import AboutCompany from '@/components/AboutUsComponents/AboutCompany/AboutCompany';
 import AboutUsBanner from '@/components/AboutUsComponents/AboutUsBanner/AboutUsBanner';
 import OurJourney from '@/components/AboutUsComponents/OurJourney/OurJourney';
+import OurLocation from '@/components/AboutUsComponents/OurLocation/OurLocation';
 import OurTeam from '@/components/AboutUsComponents/OurTeam/OurTeam';
 
 const AboutUs = () => {
@@ -10,6 +11,7 @@ const AboutUs = () => {
       <AboutCompany />
       <OurTeam />
       <OurJourney />
+      <OurLocation />
     </div>
   );
 };
