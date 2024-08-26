@@ -14,6 +14,7 @@ import {
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 type TUserInput = {
   name: string;
@@ -33,7 +34,7 @@ const SignUp = () => {
     reset,
   } = useForm<TUserInput>({
     defaultValues: {
-      role: 'user', // Set default role to 'user'
+      role: 'user',
     },
   });
 
@@ -49,8 +50,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className='my-16'>
-      <div className='font-[Oswald] flex lg:items-center justify-center'>
+    <div className='my-16 font-[Oswald]'>
+      <div className='flex lg:items-center justify-center'>
         <Card>
           <CardContent className='lg:w-[500px] w-[55vh] py-5'>
             <div className='mb-3'>
@@ -188,6 +189,13 @@ const SignUp = () => {
                 </Button>
               </div>
             </form>
+            <p className='text-center py-3'>
+              Already have an account?
+              <Link to='/signIn' className='text-orange-600 font-bold'>
+                {' '}
+                Sign In
+              </Link>
+            </p>
           </CardContent>
         </Card>
       </div>
