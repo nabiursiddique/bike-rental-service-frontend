@@ -23,7 +23,7 @@ const FeaturedBikes = () => {
           <img src={bikeLogo} alt='' />
         </div>
         <h1 className='lg:text-5xl text-3xl font-semibold uppercase lg:mt-5 text-center'>
-          Available Bikes
+          Featured Bikes
         </h1>
       </div>
 
@@ -45,8 +45,9 @@ const FeaturedBikes = () => {
                     bike: {
                       _id: string;
                       name: string;
-                      isAvailable: boolean;
                       description: string;
+                      image: string;
+                      isAvailable: boolean;
                       brand: string;
                       model: string;
                       year: number;
@@ -62,9 +63,7 @@ const FeaturedBikes = () => {
                       <BikeCard
                         id={bike._id}
                         bikeName={bike.name}
-                        imageUrl={
-                          'https://autobike.templaza.net/wp-content/uploads/2023/04/baptiste-david-XfbjTaxSnuw-unsplash.jpg'
-                        }
+                        image={bike.image}
                         availability={bike.isAvailable}
                         description={bike.description}
                         brand={bike.brand}

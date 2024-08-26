@@ -74,7 +74,7 @@ const OurLocation = () => {
               to contact us.
             </p>
             <p className='mt-4 text-gray-600'>
-              <strong className='text-orange-600'>Address:</strong> Par Noagoan,
+              <strong className='text-orange-600'>Address:</strong> Par Naogaon,
               Naogaon, Rajshahi, Bangladesh
             </p>
             <p className='mt-4 text-gray-600'>

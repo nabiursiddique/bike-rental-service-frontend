@@ -9,6 +9,7 @@ import SignIn from '@/pages/SignIn/SignIn';
 import SignUp from '@/pages/SignUp/SignUp';
 import { createBrowserRouter } from 'react-router-dom';
 import Dashboard from '@/pages/Dashboard/Dashboard';
+import BikeDetails from '@/pages/BikeDetails/BikeDetails';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
         element: <AllBikes />,
       },
       {
+        path: '/bike-details/:id',
+        element: <BikeDetails />,
+      },
+      {
         path: '/signUp',
         element: <SignUp />,
       },
@@ -47,7 +52,7 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: '/dashboard/add-bike',
+        path: 'add-bike',
         element: <AddBike />,
       },
     ],

@@ -5,12 +5,20 @@ const bikeApi = baseApi.injectEndpoints({
     getAllBikes: builder.query({
       query: () => {
         return {
-          url: '/bikes',
           method: 'GET',
+          url: '/bikes',
+        };
+      },
+    }),
+    getSingleBike: builder.query({
+      query: (id) => {
+        return {
+          method: 'GET',
+          url: `/bikes/${id}`,
         };
       },
     }),
   }),
 });
 
-export const { useGetAllBikesQuery } = bikeApi;
+export const { useGetAllBikesQuery, useGetSingleBikeQuery } = bikeApi;

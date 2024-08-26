@@ -16,7 +16,7 @@ const SideNavbar = () => {
   }[] = [
     {
       title: 'Add Bike',
-      to: '/dashboard/add-bike',
+      to: 'add-bike',
       icon: PlusCircle,
       variant: 'default',
     },
