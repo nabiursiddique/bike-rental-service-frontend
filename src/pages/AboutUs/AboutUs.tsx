@@ -1,7 +1,13 @@
+import AboutCompany from '@/components/AboutUsComponents/AboutCompany/AboutCompany';
+import AboutUsBanner from '@/components/AboutUsComponents/AboutUsBanner/AboutUsBanner';
+import OurTeam from '@/components/AboutUsComponents/OurTeam/OurTeam';
+
 const AboutUs = () => {
   return (
     <div>
-      <h1>This is about us page</h1>
+      <AboutUsBanner />
+      <AboutCompany />
+      <OurTeam />
     </div>
   );
 };
