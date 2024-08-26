@@ -8,7 +8,7 @@ const AboutUsBanner = () => {
         style={{ backgroundImage: `url(${aboutUsBannerImage})` }}
       ></div>
       <div className='absolute inset-0 bg-black opacity-70'></div>
-      <h1 className='absolute lg:text-8xl text-4xl font-sans font-extrabold text-orange-400 mt-2'>
+      <h1 className='absolute lg:text-8xl text-4xl font-extrabold text-orange-400 mt-2'>
         About Us
       </h1>
     </div>

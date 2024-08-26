@@ -1,11 +1,16 @@
+import { PiMicrosoftTeamsLogoLight } from 'react-icons/pi';
+
 const OurTeam = () => {
   return (
     <section className='py-10'>
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-        <div className='mb-12'>
-          <h2 className='font-manrope text-5xl text-center font-bold text-orange-500'>
-            Our team
-          </h2>
+        <div className='mb-7'>
+          <div className='flex justify-center'>
+            <PiMicrosoftTeamsLogoLight className='text-5xl font-extrabold text-orange-600' />
+          </div>
+          <h1 className='lg:text-5xl text-3xl font-semibold uppercase lg:mt-2 text-center'>
+            Our Team
+          </h1>
         </div>
         <div className='grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-6 lg:grid-cols-5 gap-8 max-w-xl mx-auto md:max-w-3xl lg:max-w-full'>
           <div className='block group md:col-span-2 lg:col-span-1'>
