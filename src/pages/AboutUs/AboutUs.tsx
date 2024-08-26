@@ -3,6 +3,7 @@ import AboutUsBanner from '@/components/AboutUsComponents/AboutUsBanner/AboutUsB
 import OurJourney from '@/components/AboutUsComponents/OurJourney/OurJourney';
 import OurLocation from '@/components/AboutUsComponents/OurLocation/OurLocation';
 import OurTeam from '@/components/AboutUsComponents/OurTeam/OurTeam';
+import GoToTopButton from '@/components/CommontComponents/GoToTopButton';
 
 const AboutUs = () => {
   return (
@@ -12,6 +13,7 @@ const AboutUs = () => {
       <OurTeam />
       <OurJourney />
       <OurLocation />
+      <GoToTopButton />
     </div>
   );
 };

@@ -8,9 +8,13 @@ import {
 import bikeLogo from '../../../assets/icons/Bike logo.png';
 import { useGetAllBikesQuery } from '@/redux/features/bikes/bikes.api';
 import BikeCard from '@/components/BikeCard/BikeCard';
+import Loading from '@/components/CommontComponents/Loading';
 
 const FeaturedBikes = () => {
   const { data, isLoading } = useGetAllBikesQuery(undefined);
+  if (isLoading) {
+    return <Loading />;
+  }
   const bikes = data?.data;
   return (
     <div className='mt-20 font-[oswald] lg:px-20'>
