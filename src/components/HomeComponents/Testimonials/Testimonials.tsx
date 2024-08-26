@@ -45,7 +45,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <div className='mt-20 font-[oswald]'>
+    <div className='mt-20 font-[oswald] mx-2'>
       <div>
         <div className='flex justify-center'>
           <img src={bikeLogo} alt='' />

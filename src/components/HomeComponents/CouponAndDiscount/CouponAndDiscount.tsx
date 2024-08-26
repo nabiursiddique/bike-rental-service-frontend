@@ -17,7 +17,7 @@ const promotions = [
 
 const CouponsAndDiscount = () => {
   return (
-    <div className='font-[oswald] max-w-4xl mx-auto py-12'>
+    <div className='font-[oswald] max-w-4xl lg:mx-auto md:mx-auto mx-3 py-12'>
       <div>
         <div className='flex justify-center'>
           {/* <img src={bikeLogo} alt='' /> */}

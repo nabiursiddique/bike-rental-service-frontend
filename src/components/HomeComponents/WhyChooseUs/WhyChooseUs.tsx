@@ -35,7 +35,7 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <div className='font-[oswald] max-w-6xl mx-auto py-10'>
+    <div className='font-[oswald] max-w-6xl lg:mx-auto mx-5 py-10'>
       <div className='mb-5'>
         <div className='flex justify-center'>
           <img src={bikeLogo} alt='' />

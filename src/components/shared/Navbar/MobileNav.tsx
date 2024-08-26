@@ -14,7 +14,7 @@ export default function MobileNav() {
       </SheetTrigger>
       <div className='md:hidden'>
         <Link to={'/'} className='text-orange-400'>
-          <img src={bikeLogo} alt='' />
+          <img src={bikeLogo} alt='Bike Rental Logo' />
           <h1 className='text-center text-xl font-bold'>Bike Rental</h1>
         </Link>
       </div>
@@ -22,44 +22,86 @@ export default function MobileNav() {
         <nav className='flex flex-col items-start font-[oswald]'>
           <SheetTrigger asChild>
             <NavLink to={'/'}>
-              <Button variant='link' className='hover:text-orange-500'>
-                Home
-              </Button>
+              {({ isActive }) => (
+                <Button
+                  variant='link'
+                  className={`hover:text-orange-500 ${
+                    isActive ? 'text-orange-600' : ''
+                  }`}
+                >
+                  Home
+                </Button>
+              )}
             </NavLink>
           </SheetTrigger>
           <SheetTrigger asChild>
             <NavLink to={'/about-us'}>
-              <Button variant='link' className='hover:text-orange-500'>
-                About Us
-              </Button>
+              {({ isActive }) => (
+                <Button
+                  variant='link'
+                  className={`hover:text-orange-500 ${
+                    isActive ? 'text-orange-600' : ''
+                  }`}
+                >
+                  About Us
+                </Button>
+              )}
             </NavLink>
           </SheetTrigger>
           <SheetTrigger asChild>
             <NavLink to={'/dashboard/add-bike'}>
-              <Button variant='link' className='hover:text-orange-500'>
-                Dashboard
-              </Button>
+              {({ isActive }) => (
+                <Button
+                  variant='link'
+                  className={`hover:text-orange-500 ${
+                    isActive ? 'text-orange-600' : ''
+                  }`}
+                >
+                  Dashboard
+                </Button>
+              )}
             </NavLink>
           </SheetTrigger>
           <SheetTrigger asChild>
             <NavLink to={'/all-bikes'}>
-              <Button variant='link' className='hover:text-orange-500'>
-                All Bikes
-              </Button>
+              {({ isActive }) => (
+                <Button
+                  variant='link'
+                  className={`hover:text-orange-500 ${
+                    isActive ? 'text-orange-600' : ''
+                  }`}
+                >
+                  All Bikes
+                </Button>
+              )}
             </NavLink>
           </SheetTrigger>
           <SheetTrigger asChild>
             <NavLink to={'/signUp'}>
-              <Button variant='link' className='hover:text-orange-500'>
-                Sign Up
-              </Button>
+              {({ isActive }) => (
+                <Button
+                  variant='link'
+                  className={`hover:text-orange-500 ${
+                    isActive ? 'text-orange-600' : ''
+                  }`}
+                >
+                  Sign Up
+                </Button>
+              )}
             </NavLink>
           </SheetTrigger>
           <SheetTrigger asChild>
             <NavLink to={'/signIn'}>
-              <Button variant='link' className='hover:text-orange-500'>
-                Sign In
-              </Button>
+              {({ isActive }) => (
+                <Button
+                  variant='link'
+                  className={`hover:text-orange-500 ${
+                    isActive ? 'text-orange-600' : ''
+                  }`}
+                >
+                  Sign In
+                </Button>
+              )}
             </NavLink>
           </SheetTrigger>
         </nav>
