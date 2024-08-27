@@ -7,6 +7,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import sliderImage1 from '@/assets/images/Banner Images/carousel-image-1.jpg';
 import sliderImage2 from '@/assets/images/Banner Images/carousel-image-2.jpg';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -40,8 +41,12 @@ const HeroSection = () => {
                   <span className='text-orange-400'>30% </span>Discount
                   <br />
                 </h1>
-                <div className='w-1/5'>
-                  <Button className='bg-orange-400'>Book Now</Button>
+                <div className='w-1/5 mt-3'>
+                  <Link to='/all-bikes'>
+                    <Button size='lg' className='bg-orange-400'>
+                      Book Now
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -58,12 +63,16 @@ const HeroSection = () => {
                   Special Offers <br />
                 </h1>
                 <h1 className='lg:text-7xl text-4xl font-extrabold text-white my-2'>
-                  <span className='text-orange-400'> 100 % Off </span> <br /> on
+                  <span className='text-orange-400'> 100 % Off </span> on <br />{' '}
                   01 April
                   <br />
                 </h1>
-                <div className='w-1/5'>
-                  <Button className='bg-orange-400'>Book Now</Button>
+                <div className='w-1/5 mt-3'>
+                  <Link to='/all-bikes'>
+                    <Button size='lg' className='bg-orange-400'>
+                      Book Now
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -2,14 +2,16 @@ import DashboardLayout from '@/components/layout/DashboardLayout';
 import MainLayout from '@/components/layout/MainLayout';
 import AboutUs from '@/pages/AboutUs/AboutUs';
 import AllBikes from '@/pages/AllBikes/AllBikes';
-import AddBike from '@/pages/Admin/AddBike/AddBike';
 import ErrorPage from '@/pages/ErrorPage/ErrorPage';
 import Home from '@/pages/Home/Home';
 import SignIn from '@/pages/SignIn/SignIn';
 import SignUp from '@/pages/SignUp/SignUp';
 import { createBrowserRouter } from 'react-router-dom';
-import Dashboard from '@/pages/Dashboard/Dashboard';
 import BikeDetails from '@/pages/BikeDetails/BikeDetails';
+import Profile from '@/pages/Dashboard/User/Profile/Profile';
+import AddBike from '@/pages/Dashboard/Admin/AddBike/AddBike';
+import Rentals from '@/pages/Dashboard/User/Rentals/Rentals';
+import ManageBikes from '@/pages/Dashboard/Admin/AllBikes/ManageBikes';
 
 const router = createBrowserRouter([
   {
@@ -48,12 +50,21 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       {
-        path: '/dashboard',
-        element: <Dashboard />,
+        path: 'profile',
+        element: <Profile />,
       },
+      {
+        path: 'my-rentals',
+        element: <Rentals />,
+      },
+      // admin routes
       {
         path: 'add-bike',
         element: <AddBike />,
+      },
+      {
+        path: 'manage-bikes',
+        element: <ManageBikes />,
       },
     ],
   },

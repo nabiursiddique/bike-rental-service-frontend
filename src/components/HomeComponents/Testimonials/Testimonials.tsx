@@ -10,35 +10,31 @@ import Autoplay from 'embla-carousel-autoplay';
 
 const testimonials = [
   {
-    name: 'Emily R.',
+    name: 'Mark T.',
     feedback:
       'The bikes were in great condition, and the rental process was quick and easy. Exploring the city on a bike was the highlight of my trip!',
-    avatar:
-      'https://www.shutterstock.com/image-photo/man-suit-looks-camera-smiles-260nw-606177233.jpg',
+    avatar: 'https://pagedone.io/asset/uploads/1696238374.png',
     role: 'Tourist',
   },
   {
-    name: 'Mark T.',
+    name: 'Emily R.',
     feedback:
       "I've rented bikes from several places, but this was by far the best experience. Affordable prices and excellent customer service.",
-    avatar:
-      'https://www.shutterstock.com/image-photo/man-suit-looks-camera-smiles-260nw-606177233.jpg',
+    avatar: 'https://pagedone.io/asset/uploads/1696238396.png',
     role: 'Local Resident',
+  },
+  {
+    name: 'Md Ali',
+    feedback:
+      'The e-bikes were a game-changer for our day out. We covered so much ground effortlessly. Highly recommend!',
+    avatar: 'https://pagedone.io/asset/uploads/1696238411.png',
+    role: 'Weekend Explorer',
   },
   {
     name: 'Sarah K.',
     feedback:
       'The e-bikes were a game-changer for our day out. We covered so much ground effortlessly. Highly recommend!',
-    avatar:
-      'https://www.shutterstock.com/image-photo/man-suit-looks-camera-smiles-260nw-606177233.jpg',
-    role: 'Weekend Explorer',
-  },
-  {
-    name: 'MD Zisan',
-    feedback:
-      'The e-bikes were a game-changer for our day out. We covered so much ground effortlessly. Highly recommend!',
-    avatar:
-      'https://www.shutterstock.com/image-photo/man-suit-looks-camera-smiles-260nw-606177233.jpg',
+    avatar: 'https://pagedone.io/asset/uploads/1696238425.png',
     role: 'Weekend Explorer',
   },
 ];

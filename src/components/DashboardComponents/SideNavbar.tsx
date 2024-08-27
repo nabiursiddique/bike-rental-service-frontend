@@ -15,8 +15,26 @@ const SideNavbar = () => {
     userOnly?: boolean;
   }[] = [
     {
+      title: 'Profile',
+      to: 'profile',
+      icon: PlusCircle,
+      variant: 'default',
+    },
+    {
+      title: 'My Rentals',
+      to: 'my-rentals',
+      icon: PlusCircle,
+      variant: 'default',
+    },
+    {
       title: 'Add Bike',
       to: 'add-bike',
+      icon: PlusCircle,
+      variant: 'default',
+    },
+    {
+      title: 'Manage Bikes',
+      to: 'manage-bikes',
       icon: PlusCircle,
       variant: 'default',
     },

@@ -36,7 +36,7 @@ export const MainNav = () => {
             </Button>
           )}
         </NavLink>
-        <NavLink to={'/dashboard'}>
+        <NavLink to={'/dashboard/profile'}>
           {({ isActive }) => (
             <Button
               variant='link'
