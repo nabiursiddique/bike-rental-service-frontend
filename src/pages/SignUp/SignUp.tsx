@@ -1,20 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@radix-ui/react-label';
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectGroup,
-  SelectLabel,
-  SelectItem,
-} from '@/components/ui/select';
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSignUpMutation } from '@/redux/features/auth/authApi';
+import toast from 'react-hot-toast';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 type TUserInput = {
   name: string;
@@ -25,11 +20,17 @@ type TUserInput = {
   role?: string;
 };
 
+// Define the expected error response type
+type ErrorResponse = {
+  message: string;
+};
+
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
     reset,
   } = useForm<TUserInput>({
@@ -38,8 +39,25 @@ const SignUp = () => {
     },
   });
 
-  const handleSignUp: SubmitHandler<TUserInput> = (data) => {
-    console.log(data);
+  //* sign up api
+  const [signUp, { isLoading, error }] = useSignUpMutation();
+
+  const handleSignUp: SubmitHandler<TUserInput> = async (data) => {
+    const userInfo = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      phone: data.phone,
+      address: data.address,
+      role: 'user',
+    };
+    try {
+      await signUp(userInfo).unwrap();
+      toast.success('Sign Up Successful');
+      navigate('/signIn');
+    } catch (err) {
+      toast.error('Sign Up Failed');
+    }
     reset();
   };
 
@@ -159,34 +177,34 @@ const SignUp = () => {
                     </p>
                   )}
                 </div>
-
-                <div className='space-y-2'>
-                  <Label>Role (optional)</Label>
-                  <Select
-                    onValueChange={(value) => setValue('role', value)}
-                    defaultValue='user' // Default role as 'user'
-                  >
-                    <SelectTrigger aria-label='Role'>
-                      <SelectValue placeholder='Select your Role' />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        <SelectLabel>All Roles</SelectLabel>
-                        <SelectItem value='user'>User</SelectItem>
-                        <SelectItem value='admin'>Admin</SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
-                </div>
               </div>
 
+              {error && (
+                <p className='text-red-600'>
+                  {
+                    (error as FetchBaseQueryError & { data: ErrorResponse })
+                      .data.message
+                  }
+                </p>
+              )}
+
               <div className='mt-3'>
-                <Button
-                  type='submit'
-                  className='bg-orange-600 hover:bg-orange-700 w-full text-white'
-                >
-                  Sign Up
-                </Button>
+                {isLoading ? (
+                  <Button
+                    type='submit'
+                    className='bg-orange-600 hover:bg-orange-700 w-full text-white'
+                    disabled
+                  >
+                    Sign Up
+                  </Button>
+                ) : (
+                  <Button
+                    type='submit'
+                    className='bg-orange-600 hover:bg-orange-700 w-full text-white'
+                  >
+                    Sign Up
+                  </Button>
+                )}
               </div>
             </form>
             <p className='text-center py-3'>
