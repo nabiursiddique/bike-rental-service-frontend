@@ -12,6 +12,7 @@ import Profile from '@/pages/Dashboard/User/Profile/Profile';
 import AddBike from '@/pages/Dashboard/Admin/AddBike/AddBike';
 import Rentals from '@/pages/Dashboard/User/Rentals/Rentals';
 import ManageBikes from '@/pages/Dashboard/Admin/AllBikes/ManageBikes';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: 'profile',
