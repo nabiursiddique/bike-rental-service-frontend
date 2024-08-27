@@ -69,7 +69,7 @@ const SignIn = () => {
     <div className='my-16'>
       <div className='font-[Oswald] flex lg:items-center justify-center'>
         <Card>
-          <CardContent className='lg:w-[500px] w-[55vh] py-10'>
+          <CardContent className='lg:w-[500px] w-[85vw] py-10'>
             <div className='mb-3'>
               <h2 className='text-3xl font-semibold text-orange-600'>
                 Sign In
@@ -153,7 +153,7 @@ const SignIn = () => {
               </div>
             </form>
             <p className='text-center py-3'>
-              Already have an account?
+              Don't have an account?
               <Link to='/signUp' className='text-orange-600 font-bold'>
                 {' '}
                 Sign Up

@@ -53,7 +53,7 @@ const SignUp = () => {
     <div className='my-16 font-[Oswald]'>
       <div className='flex lg:items-center justify-center'>
         <Card>
-          <CardContent className='lg:w-[500px] w-[55vh] py-5'>
+          <CardContent className='lg:w-[500px] w-[85vw] py-5'>
             <div className='mb-3'>
               <h2 className='text-3xl font-semibold text-orange-600'>
                 Sign Up

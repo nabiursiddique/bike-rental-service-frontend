@@ -3,8 +3,16 @@ import { Button } from '@/components/ui/button';
 import { Menu as MenuIcon } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import bikeLogo from '../../../assets/icons/Bike logo.png';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { logout, useCurrentUser } from '@/redux/features/auth/authSlice';
 
 export default function MobileNav() {
+  const user = useAppSelector(useCurrentUser);
+  const dispatch = useAppDispatch();
+
+  const handleSignOut = () => {
+    dispatch(logout());
+  };
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -76,33 +84,34 @@ export default function MobileNav() {
               )}
             </NavLink>
           </SheetTrigger>
+
           <SheetTrigger asChild>
-            <NavLink to={'/signUp'}>
-              {({ isActive }) => (
-                <Button
-                  variant='link'
-                  className={`hover:text-orange-500 ${
-                    isActive ? 'text-orange-600' : ''
-                  }`}
-                >
-                  Sign Up
-                </Button>
-              )}
-            </NavLink>
+            {!user && (
+              <NavLink to={'/signIn'}>
+                {({ isActive }) => (
+                  <Button
+                    variant='link'
+                    className={`hover:text-orange-500 ${
+                      isActive ? 'text-orange-600' : ''
+                    }`}
+                  >
+                    Sign In
+                  </Button>
+                )}
+              </NavLink>
+            )}
           </SheetTrigger>
+
           <SheetTrigger asChild>
-            <NavLink to={'/signIn'}>
-              {({ isActive }) => (
-                <Button
-                  variant='link'
-                  className={`hover:text-orange-500 ${
-                    isActive ? 'text-orange-600' : ''
-                  }`}
-                >
-                  Sign In
-                </Button>
-              )}
-            </NavLink>
+            {user && (
+              <Button
+                variant='secondary'
+                className='text-sm text-red-600'
+                onClick={handleSignOut}
+              >
+                Sign Out
+              </Button>
+            )}
           </SheetTrigger>
         </nav>
       </SheetContent>
