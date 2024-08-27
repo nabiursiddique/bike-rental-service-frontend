@@ -9,7 +9,7 @@ const DashboardLayout = () => {
         <Navbar></Navbar>
         <div className='flex lg:flex-row flex-col '>
           <div className=''>
-            <SideNavbar></SideNavbar>
+            <SideNavbar role={'user'}></SideNavbar>
           </div>
           <div className='lg:w-[90%] ml-10'>
             <Outlet></Outlet>

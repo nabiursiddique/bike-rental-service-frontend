@@ -1,44 +1,63 @@
 import { useState } from 'react';
 import { Button } from '../ui/button';
-import { ChevronRight, LucideIcon, PlusCircle } from 'lucide-react';
+import { ChevronRight, PlusCircle } from 'lucide-react';
 import { Nav } from '../ui/nav';
+import { LucideIcon } from 'lucide-react';
 
-const SideNavbar = () => {
+type NavLink = {
+  title: string;
+  to: string;
+  icon: LucideIcon;
+  variant?: 'default' | 'ghost';
+  adminOnly?: boolean;
+  userOnly?: boolean;
+};
+
+const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  const navLinks: {
-    title: string;
-    to: string;
-    icon: LucideIcon;
-    variant: 'default' | 'ghost';
-    adminOnly?: boolean;
-    userOnly?: boolean;
-  }[] = [
+  const navLinks: NavLink[] = [
     {
       title: 'Profile',
       to: 'profile',
       icon: PlusCircle,
       variant: 'default',
+      adminOnly: false,
+      userOnly: true,
     },
     {
       title: 'My Rentals',
       to: 'my-rentals',
       icon: PlusCircle,
       variant: 'default',
+      adminOnly: false,
+      userOnly: true,
     },
     {
       title: 'Add Bike',
       to: 'add-bike',
       icon: PlusCircle,
       variant: 'default',
+      adminOnly: true,
+      userOnly: false,
     },
     {
       title: 'Manage Bikes',
       to: 'manage-bikes',
       icon: PlusCircle,
       variant: 'default',
+      adminOnly: true,
+      userOnly: false,
     },
   ];
+
+  // Filter links based on role
+  const filteredLinks = navLinks.filter((link) => {
+    if (role === 'admin') return true; // Show all links for admin
+    if (role === 'user') return !link.adminOnly; // Show user-only links and non-admin links for users
+    return false;
+  });
+
   return (
     <div className='relative min-w-[80px] lg:min-h-[100vh] border-r px-3 lg:pt-10 text-black'>
       <div className='my-10'>
@@ -50,7 +69,7 @@ const SideNavbar = () => {
           <ChevronRight className='h-6 w-6' />
         </Button>
       </div>
-      <Nav isCollapsed={isCollapsed} links={navLinks} />
+      <Nav isCollapsed={isCollapsed} links={filteredLinks} />
     </div>
   );
 };
