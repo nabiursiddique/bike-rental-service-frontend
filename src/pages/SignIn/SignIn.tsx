@@ -1,32 +1,66 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { useLoginMutation } from '@/redux/features/auth/authApi';
+import { setUser } from '@/redux/features/auth/authSlice';
+import { useAppDispatch } from '@/redux/hooks';
 import { Label } from '@radix-ui/react-label';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 
 type TUserInput = {
   email: string;
   password: string;
 };
 
+// Define the expected error response type
+type ErrorResponse = {
+  message: string;
+};
+
 const SignIn = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<TUserInput>();
+  } = useForm<TUserInput>({
+    defaultValues: {
+      email: 'john@example.com',
+      password: 'password123',
+    },
+  });
 
-  const handleSignUp: SubmitHandler<TUserInput> = (data) => {
-    console.log(data);
+  //* login api
+  const [login, { isLoading, error }] = useLoginMutation();
+
+  //* Form submission
+  const handleSignIn: SubmitHandler<TUserInput> = async (data) => {
+    const userInfo = {
+      email: data.email,
+      password: data.password,
+    };
+
+    try {
+      const logInData = await login(userInfo).unwrap();
+      dispatch(setUser(logInData));
+      toast.success('Log In Successful');
+      navigate('/dashboard/profile');
+    } catch (err) {
+      toast.error('Log In Failed');
+    }
     reset();
   };
 
+  //* show and hide password functionality
   const [showPassword, setShowPassword] = useState(false);
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -45,7 +79,7 @@ const SignIn = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit(handleSignUp)}>
+            <form onSubmit={handleSubmit(handleSignIn)}>
               <div className='space-y-2'>
                 <div className='space-y-2'>
                   <Label htmlFor='email'>Email</Label>
@@ -89,15 +123,33 @@ const SignIn = () => {
                     </p>
                   )}
                 </div>
+                {error && (
+                  <p className='text-red-600'>
+                    {
+                      (error as FetchBaseQueryError & { data: ErrorResponse })
+                        .data.message
+                    }
+                  </p>
+                )}
               </div>
 
               <div className='mt-3'>
-                <Button
-                  type='submit'
-                  className='bg-orange-600 hover:bg-orange-700 w-full text-white'
-                >
-                  Sign In
-                </Button>
+                {isLoading ? (
+                  <Button
+                    type='submit'
+                    className='bg-orange-600 hover:bg-orange-700 w-full text-white'
+                    disabled
+                  >
+                    Sign In
+                  </Button>
+                ) : (
+                  <Button
+                    type='submit'
+                    className='bg-orange-600 hover:bg-orange-700 w-full text-white'
+                  >
+                    Sign In
+                  </Button>
+                )}
               </div>
             </form>
             <p className='text-center py-3'>

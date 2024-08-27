@@ -39,6 +39,7 @@ const AllBikes = () => {
               pricePerHour: number;
             }) => (
               <BikeCard
+                key={bike._id}
                 id={bike._id}
                 bikeName={bike.name}
                 image={bike.image}
