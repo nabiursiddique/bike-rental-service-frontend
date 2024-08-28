@@ -10,15 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSignUpMutation } from '@/redux/features/auth/authApi';
 import toast from 'react-hot-toast';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-
-type TUserInput = {
-  name: string;
-  email: string;
-  password: string;
-  phone: string;
-  address: string;
-  role?: string;
-};
+import { TUser } from '@/types/UserType';
 
 // Define the expected error response type
 type ErrorResponse = {
@@ -33,7 +25,7 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<TUserInput>({
+  } = useForm<TUser>({
     defaultValues: {
       role: 'user',
     },
@@ -42,7 +34,7 @@ const SignUp = () => {
   //* sign up api
   const [signUp, { isLoading, error }] = useSignUpMutation();
 
-  const handleSignUp: SubmitHandler<TUserInput> = async (data) => {
+  const handleSignUp: SubmitHandler<TUser> = async (data) => {
     const userInfo = {
       name: data.name,
       email: data.email,
