@@ -1,10 +1,13 @@
+import Loading from '@/components/CommonComponents/Loading';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { useCreateBikeMutation } from '@/redux/features/bikes/bikes.api';
 import { TBike } from '@/types/bikeType';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { PiMotorcycleBold } from 'react-icons/pi';
 
 const AddBike = () => {
@@ -27,8 +30,22 @@ const AddBike = () => {
     },
   });
 
+  const [createBike, { data: bikeInfo, isLoading, error, isSuccess }] =
+    useCreateBikeMutation();
+
   const handleAddBike: SubmitHandler<TBike> = (data) => {
-    console.log(data);
+    createBike(data);
+    if (isLoading) {
+      return <Loading />;
+    }
+    if (isSuccess) {
+      toast.success('Bike is added successfully');
+      console.log(bikeInfo);
+    }
+    if (error) {
+      toast.error('Bike creation failed');
+      console.log(error);
+    }
     reset();
   };
 

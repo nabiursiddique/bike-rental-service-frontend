@@ -7,5 +7,6 @@ export const baseApi = createApi({
     baseUrl:
       'https://bike-rental-reservation-system-backend-coral.vercel.app/api',
   }),
+  tagTypes: ['user', 'bike'],
   endpoints: () => ({}),
 });

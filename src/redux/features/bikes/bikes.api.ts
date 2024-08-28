@@ -2,6 +2,16 @@ import { baseApi } from '@/redux/api/baseApi';
 
 const bikeApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    createBike: builder.mutation({
+      query: (bikeInfo) => {
+        return {
+          method: 'POST',
+          url: '/bikes',
+          body: bikeInfo,
+        };
+      },
+      invalidatesTags: ['bike'],
+    }),
     getAllBikes: builder.query({
       query: () => {
         return {
@@ -9,6 +19,7 @@ const bikeApi = baseApi.injectEndpoints({
           url: '/bikes',
         };
       },
+      providesTags: ['bike'],
     }),
     getSingleBike: builder.query({
       query: (id) => {
@@ -21,4 +32,8 @@ const bikeApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllBikesQuery, useGetSingleBikeQuery } = bikeApi;
+export const {
+  useCreateBikeMutation,
+  useGetAllBikesQuery,
+  useGetSingleBikeQuery,
+} = bikeApi;
