@@ -11,13 +11,18 @@ import { FaMotorcycle, FaSearch } from 'react-icons/fa';
 import { BsCheckCircle } from 'react-icons/bs';
 import { ChartNoAxesGanttIcon } from 'lucide-react';
 import ConfirmationModal from '@/components/CommonComponents/ConfirmationModal';
-import { useGetAllBikesQuery } from '@/redux/features/bikes/bikes.api';
+import {
+  useDeleteBikeMutation,
+  useGetAllBikesQuery,
+} from '@/redux/features/bikes/bikes.api';
 import Loading from '@/components/CommonComponents/Loading';
 import { useState } from 'react';
 import { TBike } from '@/types/bikeType';
+import toast from 'react-hot-toast';
 
 const ManageBikes = () => {
   const { data, isLoading } = useGetAllBikesQuery(undefined);
+  const [deleteBike] = useDeleteBikeMutation();
 
   // Filter functionality
   const [filters, setFilters] = useState({
@@ -25,6 +30,8 @@ const ManageBikes = () => {
     model: '',
     availability: '',
   });
+
+  const [bikeInfo, setBikeInfo] = useState<TBike | null>(null);
 
   const handleFilterChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -47,11 +54,15 @@ const ManageBikes = () => {
   });
 
   // For Delete operation
-  const handleDelete = (info: string | object) => {
-    console.log('Deleting', info);
-  };
-  const bikeInfo = {
-    name: 'R15',
+  const handleDelete = async () => {
+    if (bikeInfo) {
+      try {
+        await deleteBike(bikeInfo._id);
+        toast.success('Bike Deleted Successfully');
+      } catch (err) {
+        console.error(err);
+      }
+    }
   };
 
   if (isLoading) {
@@ -152,7 +163,8 @@ const ManageBikes = () => {
                     confirm={'Confirm'}
                     cancel={'Cancel'}
                     onConfirm={handleDelete}
-                    info={bikeInfo}
+                    info={bikeInfo || {}}
+                    onOpen={() => setBikeInfo(bike)}
                   />
                 </TableCell>
               </TableRow>

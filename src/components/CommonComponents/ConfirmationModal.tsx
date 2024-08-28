@@ -30,6 +30,7 @@ type TConfirmationModal = {
   confirm: string;
   onConfirm: (info: string | object) => void;
   info: object | string;
+  onOpen?: () => void; // New optional prop for handling the modal opening
 };
 
 const ConfirmationModal = ({
@@ -41,9 +42,16 @@ const ConfirmationModal = ({
   confirm,
   onConfirm,
   info,
+  onOpen, // Accept the new onOpen prop
 }: TConfirmationModal) => {
   return (
-    <AlertDialog>
+    <AlertDialog
+      onOpenChange={(open) => {
+        if (open && onOpen) {
+          onOpen();
+        }
+      }}
+    >
       <AlertDialogTrigger asChild>
         <Button variant={variant}>{btnName}</Button>
       </AlertDialogTrigger>
