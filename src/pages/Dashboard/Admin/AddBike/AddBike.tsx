@@ -48,7 +48,7 @@ const AddBike = () => {
   }
 
   return (
-    <div className='mx-auto lg:p-4'>
+    <div className='mx-auto lg:p-4 font-[oswald]'>
       <Card className='w-full mx-auto'>
         <CardHeader className='py-8 lg:px-6 rounded-t-lg border-b-2'>
           <div className='flex gap-5 text-orange-600'>

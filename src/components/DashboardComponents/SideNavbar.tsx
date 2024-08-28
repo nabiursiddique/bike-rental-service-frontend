@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '../ui/button';
-import { ChevronRight, PlusCircle } from 'lucide-react';
+import { ChevronRight, PlusCircle, UserPen } from 'lucide-react';
 import { Nav } from '../ui/nav';
 import { LucideIcon } from 'lucide-react';
 
@@ -20,7 +20,7 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
     {
       title: 'Profile',
       to: 'profile',
-      icon: PlusCircle,
+      icon: UserPen,
       variant: 'default',
       adminOnly: false,
       userOnly: true,
