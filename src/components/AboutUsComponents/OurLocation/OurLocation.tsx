@@ -59,7 +59,7 @@ const OurLocation = () => {
                 ></textarea>
               </div>
               <div className='text-center'>
-                <Button className='bg-orange-500 hover:bg-orange-600 hover:scale-95 transition-all'>
+                <Button variant={'orangeBtn'}>
                   Send Message
                 </Button>
               </div>

@@ -137,7 +137,8 @@ const SignIn = () => {
                 {isLoading ? (
                   <Button
                     type='submit'
-                    className='bg-orange-600 hover:bg-orange-700 w-full text-white'
+                    variant={'orangeBtn'}
+                    className='w-full'
                     disabled
                   >
                     Sign In
@@ -145,7 +146,8 @@ const SignIn = () => {
                 ) : (
                   <Button
                     type='submit'
-                    className='bg-orange-600 hover:bg-orange-700 w-full text-white'
+                    variant={'orangeBtn'}
+                    className='w-full'
                   >
                     Sign In
                   </Button>

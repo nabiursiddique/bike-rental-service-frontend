@@ -42,7 +42,7 @@ const Footer = () => {
                     className='w-full border border-lime-500 focus:border-transparent focus:ring-transparent sm:text-sm p-2'
                   />
 
-                  <Button>Send</Button>
+                  <Button variant={'orangeBtn'}>Send</Button>
                 </div>
               </form>
             </div>

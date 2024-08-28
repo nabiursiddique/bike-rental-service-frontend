@@ -17,7 +17,7 @@ const DashboardLayout = () => {
               <SideNavbar role={user?.role as 'user' | 'admin'}></SideNavbar>
             )}
           </div>
-          <div className='lg:w-[90%] ml-10'>
+          <div className='lg:w-[90%] lg:ml-10 mx-3'>
             <Outlet></Outlet>
           </div>
         </div>

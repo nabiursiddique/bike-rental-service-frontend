@@ -43,7 +43,7 @@ const HeroSection = () => {
                 </h1>
                 <div className='w-1/5 mt-3'>
                   <Link to='/all-bikes'>
-                    <Button size='lg' className='bg-orange-400'>
+                    <Button size='lg' variant={'orangeBtn'}>
                       Book Now
                     </Button>
                   </Link>
@@ -69,7 +69,7 @@ const HeroSection = () => {
                 </h1>
                 <div className='w-1/5 mt-3'>
                   <Link to='/all-bikes'>
-                    <Button size='lg' className='bg-orange-400'>
+                    <Button size='lg' variant={'orangeBtn'}>
                       Book Now
                     </Button>
                   </Link>

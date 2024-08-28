@@ -10,7 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSignUpMutation } from '@/redux/features/auth/authApi';
 import toast from 'react-hot-toast';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { TUser } from '@/types/UserType';
+import { TUser } from '@/types/userType';
 
 // Define the expected error response type
 type ErrorResponse = {
@@ -184,7 +184,8 @@ const SignUp = () => {
                 {isLoading ? (
                   <Button
                     type='submit'
-                    className='bg-orange-600 hover:bg-orange-700 w-full text-white'
+                    className='w-full'
+                    variant={'orangeBtn'}
                     disabled
                   >
                     Sign Up
@@ -192,7 +193,8 @@ const SignUp = () => {
                 ) : (
                   <Button
                     type='submit'
-                    className='bg-orange-600 hover:bg-orange-700 w-full text-white'
+                    className='w-full'
+                    variant={'orangeBtn'}
                   >
                     Sign Up
                   </Button>

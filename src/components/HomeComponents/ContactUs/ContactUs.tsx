@@ -61,7 +61,7 @@ const ContactUs = () => {
               </div>
             </div>
             <div className='flex justify-center'>
-              <Button size='lg' className='w-full bg-orange-600'>
+              <Button size='lg' variant={'orangeBtn'} className='w-full'>
                 Send
               </Button>
             </div>
