@@ -1,4 +1,5 @@
 export type TBike = {
+  _id?: string;
   name: string;
   description: string;
   image: string;
@@ -7,4 +8,5 @@ export type TBike = {
   year: number;
   model: string;
   brand: string;
+  isAvailable?: boolean;
 };
