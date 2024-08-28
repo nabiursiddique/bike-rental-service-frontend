@@ -30,24 +30,22 @@ const AddBike = () => {
     },
   });
 
-  const [createBike, { data: bikeInfo, isLoading, error, isSuccess }] =
-    useCreateBikeMutation();
+  const [createBike, { isLoading }] = useCreateBikeMutation();
 
-  const handleAddBike: SubmitHandler<TBike> = (data) => {
-    createBike(data);
-    if (isLoading) {
-      return <Loading />;
+  const handleAddBike: SubmitHandler<TBike> = async (bikeData) => {
+    try {
+      await createBike(bikeData).unwrap();
+      toast.success('Bike added successfully');
+      reset();
+    } catch (err) {
+      console.log(err);
+      toast.error('Failed to add the bike. Please try again.');
     }
-    if (isSuccess) {
-      toast.success('Bike is added successfully');
-      console.log(bikeInfo);
-    }
-    if (error) {
-      toast.error('Bike creation failed');
-      console.log(error);
-    }
-    reset();
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className='mx-auto lg:p-4'>
@@ -223,14 +221,26 @@ const AddBike = () => {
             </div>
 
             <div className='col-span-1 md:col-span-2 flex lg:justify-end justify-start gap-2 mt-3 '>
-              <Button
-                variant={'orangeBtn'}
-                size={'lg'}
-                type='submit'
-                className='w-full'
-              >
-                Add Bike
-              </Button>
+              {isLoading ? (
+                <Button
+                  variant={'orangeBtn'}
+                  size={'lg'}
+                  type='submit'
+                  className='w-full'
+                  disabled
+                >
+                  Add Bike
+                </Button>
+              ) : (
+                <Button
+                  variant={'orangeBtn'}
+                  size={'lg'}
+                  type='submit'
+                  className='w-full'
+                >
+                  Add Bike
+                </Button>
+              )}
             </div>
           </form>
         </CardContent>
