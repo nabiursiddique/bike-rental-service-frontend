@@ -11,7 +11,7 @@ import BikeDetails from '@/pages/BikeDetails/BikeDetails';
 import Profile from '@/pages/Dashboard/User/Profile/Profile';
 import AddBike from '@/pages/Dashboard/Admin/AddBike/AddBike';
 import Rentals from '@/pages/Dashboard/User/Rentals/Rentals';
-import ManageBikes from '@/pages/Dashboard/Admin/AllBikes/ManageBikes';
+import ManageBikes from '@/pages/Dashboard/Admin/ManageBikes/ManageBikes';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([

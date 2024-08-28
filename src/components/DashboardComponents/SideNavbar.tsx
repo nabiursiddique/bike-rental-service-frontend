@@ -26,14 +26,6 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
       userOnly: true,
     },
     {
-      title: 'My Rentals',
-      to: 'my-rentals',
-      icon: PlusCircle,
-      variant: 'default',
-      adminOnly: false,
-      userOnly: true,
-    },
-    {
       title: 'Add Bike',
       to: 'add-bike',
       icon: PlusCircle,
@@ -48,6 +40,14 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
       variant: 'default',
       adminOnly: true,
       userOnly: false,
+    },
+    {
+      title: 'My Rentals',
+      to: 'my-rentals',
+      icon: PlusCircle,
+      variant: 'default',
+      adminOnly: false,
+      userOnly: true,
     },
   ];
 
