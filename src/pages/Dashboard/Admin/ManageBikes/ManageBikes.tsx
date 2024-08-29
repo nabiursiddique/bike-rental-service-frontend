@@ -19,6 +19,7 @@ import Loading from '@/components/CommonComponents/Loading';
 import { useState } from 'react';
 import { TBike } from '@/types/bikeType';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const ManageBikes = () => {
   const { data, isLoading } = useGetAllBikesQuery(undefined);
@@ -148,9 +149,15 @@ const ManageBikes = () => {
                   {bike.isAvailable ? 'Available' : 'Not Available'}
                 </TableCell>
                 <TableCell>
-                  <Button variant='orangeBtn' size={'sm'} className='mr-2 my-4'>
-                    Update
-                  </Button>
+                  <Link to={`/dashboard/update-bike/${bike._id}`}>
+                    <Button
+                      variant='orangeBtn'
+                      size={'sm'}
+                      className='mr-2 my-4'
+                    >
+                      Update
+                    </Button>
+                  </Link>
 
                   {/* Delete modal */}
                   <ConfirmationModal

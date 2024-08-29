@@ -72,7 +72,7 @@ const Profile = () => {
             </Avatar>
             <div>
               <h3 className='text-2xl font-bold text-orange-600'>
-                {userProfile.name}
+                Hi {userProfile.name} !
               </h3>
               <p className='text-sm '>{userProfile.email}</p>
             </div>
