@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Button } from '../ui/button';
 import {
-  ChartNoAxesGantt,
+  Bike,
   ChevronRight,
   PlusCircle,
   UserPen,
+  UsersRound,
 } from 'lucide-react';
 import { Nav } from '../ui/nav';
 import { LucideIcon } from 'lucide-react';
@@ -41,7 +42,7 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
     {
       title: 'Manage Bikes',
       to: 'manage-bikes',
-      icon: ChartNoAxesGantt,
+      icon: Bike,
       variant: 'default',
       adminOnly: true,
       userOnly: false,
@@ -49,7 +50,7 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
     {
       title: 'Manage Users',
       to: 'manage-users',
-      icon: ChartNoAxesGantt,
+      icon: UsersRound,
       variant: 'default',
       adminOnly: true,
       userOnly: false,

@@ -1,3 +1,4 @@
+import ConfirmationModal from '@/components/CommonComponents/ConfirmationModal';
 import Loading from '@/components/CommonComponents/Loading';
 import {
   Table,
@@ -8,11 +9,13 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import {
+  useDeleteUserMutation,
   useGetAllUsersQuery,
   useUpdateUserRoleMutation,
 } from '@/redux/features/users/users.api';
 import { TUser } from '@/types/userType';
 import { RefreshCcw } from 'lucide-react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 const ManageUsers = () => {
@@ -20,9 +23,11 @@ const ManageUsers = () => {
   const [updateUserRole, { isLoading: isUpdatingRole }] =
     useUpdateUserRoleMutation();
 
+  const [deleteUser] = useDeleteUserMutation();
+
   const users = data?.data;
 
-  // role change
+  // changing role of an user
   const handleRoleChange = async (userId: string, role: string) => {
     const updatedUserRole = {
       id: userId,
@@ -34,6 +39,20 @@ const ManageUsers = () => {
     } catch (err) {
       console.log(err);
       toast.error('Role change operation failed');
+    }
+  };
+
+  // deleting a user
+  const [userInfo, setUserInfo] = useState<TUser | null>(null);
+
+  const handleDeleteUser = async () => {
+    if (userInfo) {
+      try {
+        await deleteUser(userInfo._id);
+        toast.success('User Deleted Successfully');
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -90,7 +109,7 @@ const ManageUsers = () => {
                 </TableCell>
                 <TableCell>
                   {/* Delete modal */}
-                  {/* <ConfirmationModal
+                  <ConfirmationModal
                     variant={'redBtn'}
                     btnName={'Delete'}
                     alertTitle={'Are You Sure?'}
@@ -99,10 +118,10 @@ const ManageUsers = () => {
                     }
                     confirm={'Confirm'}
                     cancel={'Cancel'}
-                    onConfirm={}
-                    info={}
-                    onOpen={}
-                  /> */}
+                    onConfirm={handleDeleteUser}
+                    info={userInfo || {}}
+                    onOpen={() => setUserInfo(user)}
+                  />
                 </TableCell>
               </TableRow>
             ))
