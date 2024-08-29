@@ -4,6 +4,7 @@ import {
   Bike,
   ChevronRight,
   PlusCircle,
+  Undo2,
   UserPen,
   UsersRound,
 } from 'lucide-react';
@@ -70,6 +71,14 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
       variant: 'default',
       adminOnly: false,
       userOnly: true,
+    },
+    {
+      title: 'Return Bikes',
+      to: 'returnBikes',
+      icon: Undo2,
+      variant: 'default',
+      adminOnly: true,
+      userOnly: false,
     },
   ];
 

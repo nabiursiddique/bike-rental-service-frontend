@@ -18,6 +18,7 @@ import AdminPrivateRoute from './AdminPrivateRoute/AdminPrivateRoute';
 import ManageUsers from '@/pages/Dashboard/Admin/ManageUsers/ManageUsers';
 import AllBikesForUser from '@/pages/Dashboard/User/AllBikesForUser/AllBikesForUser';
 import UserPrivateRoute from './UserPrivateRoute/UserPrivateRoute';
+import ReturnBike from '@/pages/Dashboard/Admin/ReturnBike/ReturnBike';
 
 const router = createBrowserRouter([
   {
@@ -106,6 +107,14 @@ const router = createBrowserRouter([
         element: (
           <AdminPrivateRoute>
             <UpdateBikeInfo />
+          </AdminPrivateRoute>
+        ),
+      },
+      {
+        path: 'returnBikes',
+        element: (
+          <AdminPrivateRoute>
+            <ReturnBike />
           </AdminPrivateRoute>
         ),
       },
