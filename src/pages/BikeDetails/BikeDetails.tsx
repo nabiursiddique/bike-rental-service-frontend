@@ -109,7 +109,7 @@ const BikeDetails = () => {
                     variant='orangeBtn'
                     onClick={() => setIsModalOpen(true)}
                   >
-                    Rent Now
+                    Book Now
                   </Button>
                 ) : (
                   <Button size='lg' variant='orangeBtn' disabled>

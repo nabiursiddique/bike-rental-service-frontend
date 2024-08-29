@@ -10,7 +10,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import BikeDetails from '@/pages/BikeDetails/BikeDetails';
 import Profile from '@/pages/Dashboard/User/Profile/Profile';
 import AddBike from '@/pages/Dashboard/Admin/AddBike/AddBike';
-import Rentals from '@/pages/Dashboard/User/Rentals/Rentals';
+import Rentals from '@/pages/Dashboard/User/MyRentals/MyRentals';
 import ManageBikes from '@/pages/Dashboard/Admin/ManageBikes/ManageBikes';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import UpdateBikeInfo from '@/pages/Dashboard/Admin/UpdateBikeInfo/UpdateBikeInfo';

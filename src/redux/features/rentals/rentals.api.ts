@@ -10,8 +10,17 @@ const rentalApi = baseApi.injectEndpoints({
           body: rentalInfo,
         };
       },
+      invalidatesTags: ['bike'],
+    }),
+    myRentals: builder.query({
+      query: () => {
+        return {
+          method: 'GET',
+          url: '/rentals',
+        };
+      },
     }),
   }),
 });
 
-export const { useCreateRentalMutation } = rentalApi;
+export const { useCreateRentalMutation, useMyRentalsQuery } = rentalApi;
