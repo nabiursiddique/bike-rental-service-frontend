@@ -8,16 +8,32 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { useGetAllRentalsQuery } from '@/redux/features/rentals/rentals.api';
+import {
+  useGetAllRentalsQuery,
+  useReturnBikeMutation,
+} from '@/redux/features/rentals/rentals.api';
 import { TRental } from '@/types/rentalType';
 import { CheckCheck, CornerUpLeft } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 const ReturnBike = () => {
   const { data, isLoading } = useGetAllRentalsQuery(undefined);
+  const [returnBike, { isLoading: returnBikeLoading }] =
+    useReturnBikeMutation();
 
   const allRentals = data?.data;
 
-  if (isLoading) {
+  const handleReturn = async (rentalId: string) => {
+    try {
+      await returnBike(rentalId).unwrap();
+      toast.success('Bike returned successfully!');
+    } catch (error) {
+      console.log(error);
+      toast.error('Failed to return the bike.');
+    }
+  };
+
+  if (isLoading || returnBikeLoading) {
     return <Loading />;
   }
 
@@ -39,7 +55,7 @@ const ReturnBike = () => {
         </TableHeader>
         <TableBody>
           {allRentals.map((rental: TRental) => (
-            <TableRow key={'id'}>
+            <TableRow key={rental._id}>
               <TableCell>{rental.bikeId}</TableCell>
               <TableCell>{rental.startTime}</TableCell>
               <TableCell>
@@ -49,7 +65,13 @@ const ReturnBike = () => {
                 {rental.isReturned ? (
                   <CheckCheck className='text-green-600' />
                 ) : (
-                  <Button variant={'orangeBtn'}>Calculate</Button>
+                  <Button
+                    variant={'orangeBtn'}
+                    onClick={() => handleReturn(rental._id as string)}
+                    disabled={returnBikeLoading}
+                  >
+                    Calculate
+                  </Button>
                 )}
               </TableCell>
             </TableRow>

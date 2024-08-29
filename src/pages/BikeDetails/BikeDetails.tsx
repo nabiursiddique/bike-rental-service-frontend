@@ -14,7 +14,7 @@ const BikeDetails = () => {
   const navigate = useNavigate();
   const user = useAppSelector(useCurrentUser);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data, isLoading } = useGetSingleBikeQuery(id);
+  const { data, isLoading, refetch } = useGetSingleBikeQuery(id);
   const bike = data?.data;
   const [createRental, { isLoading: createRentalLoading }] =
     useCreateRentalMutation();
@@ -26,12 +26,15 @@ const BikeDetails = () => {
         startTime: startTime,
       };
       const result = await createRental(rentInfo);
+
       if (result.data) {
         toast.success('Bike Rented Successfully');
+        setIsModalOpen(false);
+        refetch();
       } else {
         toast.error('Bike is not available');
+        setIsModalOpen(false);
       }
-      setIsModalOpen(false);
     } catch (err) {
       console.log(err);
     }
