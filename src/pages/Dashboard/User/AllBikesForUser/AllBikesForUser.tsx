@@ -1,3 +1,5 @@
+import Loading from '@/components/CommonComponents/Loading';
+import { Button } from '@/components/ui/button';
 import {
   Table,
   TableBody,
@@ -6,24 +8,16 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Button } from '@/components/ui/button';
-import { FaMotorcycle, FaSearch } from 'react-icons/fa';
-import { BsCheckCircle } from 'react-icons/bs';
-import { ChartNoAxesGanttIcon } from 'lucide-react';
-import ConfirmationModal from '@/components/CommonComponents/ConfirmationModal';
-import {
-  useDeleteBikeMutation,
-  useGetAllBikesQuery,
-} from '@/redux/features/bikes/bikes.api';
-import Loading from '@/components/CommonComponents/Loading';
-import { useState } from 'react';
+import { useGetAllBikesQuery } from '@/redux/features/bikes/bikes.api';
 import { TBike } from '@/types/bikeType';
-import toast from 'react-hot-toast';
+import { ChartNoAxesGanttIcon } from 'lucide-react';
+import { useState } from 'react';
+import { BsCheckCircle } from 'react-icons/bs';
+import { FaMotorcycle, FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const ManageBikes = () => {
+const AllBikesForUser = () => {
   const { data, isLoading } = useGetAllBikesQuery(undefined);
-  const [deleteBike] = useDeleteBikeMutation();
 
   // Filter functionality
   const [filters, setFilters] = useState({
@@ -31,8 +25,6 @@ const ManageBikes = () => {
     model: '',
     availability: '',
   });
-
-  const [bikeInfo, setBikeInfo] = useState<TBike | null>(null);
 
   const handleFilterChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -54,18 +46,6 @@ const ManageBikes = () => {
     );
   });
 
-  // For Delete operation
-  const handleDelete = async () => {
-    if (bikeInfo) {
-      try {
-        await deleteBike(bikeInfo._id);
-        toast.success('Bike Deleted Successfully');
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  };
-
   if (isLoading) {
     return <Loading />;
   }
@@ -74,7 +54,7 @@ const ManageBikes = () => {
     <div className='p-6 font-[oswald] '>
       <div className='flex items-center mb-4 gap-2 text-orange-600 text-2xl'>
         <ChartNoAxesGanttIcon />
-        <h2 className='font-bold '>Manage Bikes</h2>
+        <h2 className='font-bold '>Bike Listing</h2>
       </div>
 
       {/* Filter Inputs */}
@@ -152,30 +132,15 @@ const ManageBikes = () => {
                   {bike.isAvailable ? 'Available' : 'Not Available'}
                 </TableCell>
                 <TableCell>
-                  <Link to={`/dashboard/update-bike/${bike._id}`}>
+                  <Link to={`/bike-details/${bike._id}`}>
                     <Button
                       variant='orangeBtn'
                       size={'sm'}
                       className='mr-2 my-4'
                     >
-                      Update
+                      View Details
                     </Button>
                   </Link>
-
-                  {/* Delete modal */}
-                  <ConfirmationModal
-                    variant={'redBtn'}
-                    btnName={'Delete'}
-                    alertTitle={'Are You Sure?'}
-                    alertMessage={
-                      "You cannot recover the data once it's deleted."
-                    }
-                    confirm={'Confirm'}
-                    cancel={'Cancel'}
-                    onConfirm={handleDelete}
-                    info={bikeInfo || {}}
-                    onOpen={() => setBikeInfo(bike)}
-                  />
                 </TableCell>
               </TableRow>
             ))
@@ -186,4 +151,4 @@ const ManageBikes = () => {
   );
 };
 
-export default ManageBikes;
+export default AllBikesForUser;

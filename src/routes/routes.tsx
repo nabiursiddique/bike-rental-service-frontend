@@ -16,6 +16,8 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import UpdateBikeInfo from '@/pages/Dashboard/Admin/UpdateBikeInfo/UpdateBikeInfo';
 import AdminPrivateRoute from './AdminPrivateRoute/AdminPrivateRoute';
 import ManageUsers from '@/pages/Dashboard/Admin/ManageUsers/ManageUsers';
+import AllBikesForUser from '@/pages/Dashboard/User/AllBikesForUser/AllBikesForUser';
+import UserPrivateRoute from './UserPrivateRoute/UserPrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +39,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/bike-details/:id',
-        element: <BikeDetails />,
+        element: (
+          <PrivateRoute>
+            <BikeDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/signUp',
@@ -61,9 +67,18 @@ const router = createBrowserRouter([
         path: 'profile',
         element: <Profile />,
       },
+      // user routes
       {
         path: 'my-rentals',
         element: <Rentals />,
+      },
+      {
+        path: 'all-bikes',
+        element: (
+          <UserPrivateRoute>
+            <AllBikesForUser />
+          </UserPrivateRoute>
+        ),
       },
       // admin routes
       {

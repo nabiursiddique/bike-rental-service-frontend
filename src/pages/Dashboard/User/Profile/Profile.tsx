@@ -82,8 +82,14 @@ const Profile = () => {
             className='text-1xl'
             onClick={() => setIsEditing(true)}
           >
-            <FilePenIcon className='h-5 w-5 text-orange-600' />
-            <span className='text-orange-600'>Edit Profile</span>
+            <FilePenIcon
+              className={
+                isEditing ? 'text-green-500 h-5 w-5' : 'text-orange-600 h-5 w-5'
+              }
+            />
+            <span className={isEditing ? 'text-green-500' : 'text-orange-600'}>
+              Edit Profile
+            </span>
           </Button>
         </div>
       </CardHeader>

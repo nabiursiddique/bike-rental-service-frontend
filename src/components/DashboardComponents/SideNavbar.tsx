@@ -29,7 +29,7 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
       icon: UserPen,
       variant: 'default',
       adminOnly: false,
-      userOnly: true,
+      userOnly: false,
     },
     {
       title: 'Add Bike',
@@ -56,6 +56,14 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
       userOnly: false,
     },
     {
+      title: 'All Bikes',
+      to: 'all-bikes',
+      icon: Bike,
+      variant: 'default',
+      adminOnly: false,
+      userOnly: true,
+    },
+    {
       title: 'My Rentals',
       to: 'my-rentals',
       icon: PlusCircle,
@@ -67,8 +75,8 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
 
   // Filter links based on role
   const filteredLinks = navLinks.filter((link) => {
-    if (role === 'admin') return true; // Show all links for admin
-    if (role === 'user') return !link.adminOnly; // Show user-only links and non-admin links for users
+    if (role === 'admin') return !link.userOnly; // Show only non-user-specific links for admin
+    if (role === 'user') return !link.adminOnly; // Show user-specific links and non-admin links for users
     return false;
   });
 
@@ -80,7 +88,11 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
           onClick={() => setIsCollapsed(!isCollapsed)}
           className='lg:absolute lg:right-[-20%] right-20 lg:top-5 hidden lg:block'
         >
-          <ChevronRight className='h-6 w-6' />
+          <ChevronRight
+            className={`h-6 w-6 transition-transform ${
+              isCollapsed ? 'rotate-180' : ''
+            }`}
+          />
         </Button>
       </div>
       <Nav isCollapsed={isCollapsed} links={filteredLinks} />
