@@ -84,7 +84,7 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
     <div className='relative min-w-[80px] lg:min-h-[100vh] border-r px-3 lg:pt-10 font-[oswald]'>
       <div className='my-10'>
         <Button
-          variant='secondary'
+          variant='orangeBtn'
           onClick={() => setIsCollapsed(!isCollapsed)}
           className='lg:absolute lg:right-[-20%] right-20 lg:top-5 hidden lg:block'
         >

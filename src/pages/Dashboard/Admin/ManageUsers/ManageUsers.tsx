@@ -71,7 +71,7 @@ const ManageUsers = () => {
           <TableRow className='border border-orange-600'>
             <TableHead className='text-orange-600'>Name</TableHead>
             <TableHead className='text-orange-600'>Email</TableHead>
-            <TableHead className='text-orange-600'>Role</TableHead>
+            <TableHead className='text-orange-600'>Change Role</TableHead>
             <TableHead className='text-orange-600'>Actions</TableHead>
           </TableRow>
         </TableHeader>

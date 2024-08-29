@@ -1,13 +1,43 @@
+import CustomModal from '@/components/CommonComponents/CustomModal';
 import Loading from '@/components/CommonComponents/Loading';
 import { Button } from '@/components/ui/button';
+import { useCurrentUser } from '@/redux/features/auth/authSlice';
 import { useGetSingleBikeQuery } from '@/redux/features/bikes/bikes.api';
-import { useParams } from 'react-router-dom';
+import { useCreateRentalMutation } from '@/redux/features/rentals/rentals.api';
+import { useAppSelector } from '@/redux/hooks';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const BikeDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const user = useAppSelector(useCurrentUser);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { data, isLoading } = useGetSingleBikeQuery(id);
   const bike = data?.data;
-  if (isLoading) {
+  const [createRental, { isLoading: createRentalLoading }] =
+    useCreateRentalMutation();
+
+  const handleRentNow = async (startTime: string) => {
+    try {
+      const rentInfo = {
+        bikeId: bike._id,
+        startTime: startTime,
+      };
+      const result = await createRental(rentInfo);
+      if (result.data) {
+        toast.success('Bike Rented Successfully');
+      } else {
+        toast.error('Bike is not available');
+      }
+      setIsModalOpen(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  if (isLoading || createRentalLoading) {
     return <Loading />;
   }
 
@@ -72,22 +102,39 @@ const BikeDetails = () => {
               </div>
             </div>
             <div className='flex gap-4'>
-              {bike.isAvailable ? (
+              {user ? (
+                bike.isAvailable ? (
+                  <Button
+                    size='lg'
+                    variant='orangeBtn'
+                    onClick={() => setIsModalOpen(true)}
+                  >
+                    Rent Now
+                  </Button>
+                ) : (
+                  <Button size='lg' variant='orangeBtn' disabled>
+                    Bike is not available
+                  </Button>
+                )
+              ) : (
                 <Button
                   size='lg'
-                  className='bg-orange-500 hover:bg-orange-600 hover:scale-95 transition-all'
+                  variant='orangeBtn'
+                  onClick={() => navigate('/signIn')}
                 >
-                  Rent Now
-                </Button>
-              ) : (
-                <Button size='lg' variant='outline'>
-                  Notify me when available
+                  Login to Rent
                 </Button>
               )}
             </div>
           </div>
         </div>
       </div>
+      {/* Custom Modal */}
+      <CustomModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleRentNow}
+      />
     </div>
   );
 };

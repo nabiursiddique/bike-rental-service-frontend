@@ -39,11 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/bike-details/:id',
-        element: (
-          <PrivateRoute>
-            <BikeDetails />
-          </PrivateRoute>
-        ),
+        element: <BikeDetails />,
       },
       {
         path: '/signUp',
