@@ -47,6 +47,14 @@ const SideNavbar = ({ role }: { role: 'admin' | 'user' }) => {
       userOnly: false,
     },
     {
+      title: 'Manage Users',
+      to: 'manage-users',
+      icon: ChartNoAxesGantt,
+      variant: 'default',
+      adminOnly: true,
+      userOnly: false,
+    },
+    {
       title: 'My Rentals',
       to: 'my-rentals',
       icon: PlusCircle,

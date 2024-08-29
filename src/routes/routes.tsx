@@ -15,6 +15,7 @@ import ManageBikes from '@/pages/Dashboard/Admin/ManageBikes/ManageBikes';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import UpdateBikeInfo from '@/pages/Dashboard/Admin/UpdateBikeInfo/UpdateBikeInfo';
 import AdminPrivateRoute from './AdminPrivateRoute/AdminPrivateRoute';
+import ManageUsers from '@/pages/Dashboard/Admin/ManageUsers/ManageUsers';
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,14 @@ const router = createBrowserRouter([
         element: (
           <AdminPrivateRoute>
             <ManageBikes />
+          </AdminPrivateRoute>
+        ),
+      },
+      {
+        path: 'manage-users',
+        element: (
+          <AdminPrivateRoute>
+            <ManageUsers />
           </AdminPrivateRoute>
         ),
       },

@@ -30,6 +30,16 @@ const userApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ['user'],
     }),
+    updateUserRole: builder.mutation({
+      query: (updatedUserRole) => {
+        return {
+          method: 'PATCH',
+          url: `/users/updateRole/${updatedUserRole.id}`,
+          body: { role: updatedUserRole.role },
+        };
+      },
+      invalidatesTags: ['user'],
+    }),
   }),
 });
 
@@ -37,4 +47,5 @@ export const {
   useGetAllUsersQuery,
   useGetUserProfileQuery,
   useUpdateProfileMutation,
+  useUpdateUserRoleMutation,
 } = userApi;
