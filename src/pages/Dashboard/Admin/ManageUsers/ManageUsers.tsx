@@ -12,6 +12,7 @@ import {
   useUpdateUserRoleMutation,
 } from '@/redux/features/users/users.api';
 import { TUser } from '@/types/userType';
+import { RefreshCcw } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const ManageUsers = () => {
@@ -68,17 +69,24 @@ const ManageUsers = () => {
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>
-                  <select
-                    name='role'
-                    value={user.role}
-                    onChange={(e) =>
-                      handleRoleChange(user._id as string, e.target.value)
-                    }
-                    className='select-filter md:w-64 pl-10 pr-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500'
-                  >
-                    <option value='admin'>Admin</option>
-                    <option value='user'>User</option>
-                  </select>
+                  {isUpdatingRole ? (
+                    <div className='flex gap-2'>
+                      <RefreshCcw className='mr-2 h-4 w-4 animate-spin text-orange-600' />
+                      <p>Loading</p>
+                    </div>
+                  ) : (
+                    <select
+                      name='role'
+                      value={user.role}
+                      onChange={(e) =>
+                        handleRoleChange(user._id as string, e.target.value)
+                      }
+                      className='select-filter md:w-64 pl-10 pr-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500'
+                    >
+                      <option value='admin'>Admin</option>
+                      <option value='user'>User</option>
+                    </select>
+                  )}
                 </TableCell>
                 <TableCell>
                   {/* Delete modal */}
