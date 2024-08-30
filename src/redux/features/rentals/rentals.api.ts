@@ -10,7 +10,7 @@ const rentalApi = baseApi.injectEndpoints({
           body: rentalInfo,
         };
       },
-      invalidatesTags: ['rental'],
+      invalidatesTags: ['rental', 'bike'],
     }),
     myRentals: builder.query({
       query: () => {
@@ -37,7 +37,7 @@ const rentalApi = baseApi.injectEndpoints({
           url: `/rentals/${id}/return`,
         };
       },
-      invalidatesTags: ['rental'],
+      invalidatesTags: ['rental', 'bike'],
     }),
   }),
 });

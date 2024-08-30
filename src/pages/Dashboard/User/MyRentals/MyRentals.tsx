@@ -12,10 +12,8 @@ const MyRentals = () => {
 
   const myRentals = data?.data;
 
-  const paidRentals = myRentals?.filter((rental: TRental) => rental.isReturned);
-  const unpaidRentals = myRentals?.filter(
-    (rental: TRental) => !rental.isReturned
-  );
+  const paidRentals = myRentals?.filter((rental: TRental) => rental.isPaid);
+  const unpaidRentals = myRentals?.filter((rental: TRental) => !rental.isPaid);
 
   const handlePayment = () => {
     console.log('we will redirect to payment page');

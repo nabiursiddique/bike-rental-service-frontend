@@ -21,7 +21,7 @@ const ReturnBike = () => {
   const [returnBike, { isLoading: returnBikeLoading }] =
     useReturnBikeMutation();
 
-  const allRentals = data?.data;
+  const allRentals = data?.data || [];
 
   const handleReturn = async (rentalId: string) => {
     try {
@@ -33,12 +33,23 @@ const ReturnBike = () => {
     }
   };
 
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    };
+    return new Date(dateString).toLocaleString(undefined, options);
+  };
+
   if (isLoading || returnBikeLoading) {
     return <Loading />;
   }
 
   return (
-    <div className='p-6 font-[oswald] '>
+    <div className='p-6 font-[oswald]'>
       <div className='flex items-center mb-4 gap-2 text-orange-600 text-2xl'>
         <CornerUpLeft />
         <h2 className='font-bold'>Return Bikes</h2>
@@ -54,28 +65,41 @@ const ReturnBike = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {allRentals.map((rental: TRental) => (
-            <TableRow key={rental._id}>
-              <TableCell>{rental.bikeId}</TableCell>
-              <TableCell>{rental.startTime}</TableCell>
-              <TableCell>
-                {rental.returnTime ? rental.returnTime : 'Not Returned'}
-              </TableCell>
-              <TableCell>
-                {rental.isReturned ? (
-                  <CheckCheck className='text-green-600' />
-                ) : (
-                  <Button
-                    variant={'orangeBtn'}
-                    onClick={() => handleReturn(rental._id as string)}
-                    disabled={returnBikeLoading}
-                  >
-                    Calculate
-                  </Button>
-                )}
+          {allRentals.length > 0 ? (
+            allRentals.map((rental: TRental) => (
+              <TableRow key={rental._id}>
+                <TableCell>{rental.bikeId}</TableCell>
+                <TableCell>{formatDate(rental.startTime)}</TableCell>
+                <TableCell>
+                  {rental.returnTime
+                    ? formatDate(rental.returnTime)
+                    : 'Not Returned'}
+                </TableCell>
+                <TableCell>
+                  {rental.isReturned ? (
+                    <CheckCheck className='text-green-600' />
+                  ) : (
+                    <Button
+                      variant={'orangeBtn'}
+                      onClick={() => handleReturn(rental._id as string)}
+                      disabled={returnBikeLoading}
+                    >
+                      Calculate
+                    </Button>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell
+                colSpan={4}
+                className='text-center font-bold text-xl text-orange-600'
+              >
+                Currently No Rental is Available
               </TableCell>
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
     </div>

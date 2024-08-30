@@ -19,7 +19,7 @@ const bikeApi = baseApi.injectEndpoints({
           url: '/bikes',
         };
       },
-      providesTags: ['bike'],
+      providesTags: ['bike', 'rental'],
     }),
     getSingleBike: builder.query({
       query: (id) => {
@@ -28,7 +28,7 @@ const bikeApi = baseApi.injectEndpoints({
           url: `/bikes/${id}`,
         };
       },
-      providesTags: ['bike'],
+      providesTags: ['bike', 'rental'],
     }),
     deleteBike: builder.mutation({
       query: (id) => {

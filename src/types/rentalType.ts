@@ -6,4 +6,5 @@ export type TRental = {
   returnTime?: string | null;
   totalCost?: number;
   isReturned: boolean;
+  isPaid: boolean;
 };
