@@ -27,9 +27,14 @@ const BikeDetails = () => {
       };
       const result = await createRental(rentInfo);
 
-      if (result.data) {
-        toast.success('Bike Rented Successfully');
+      if (result?.data) {
+        // logging whole data
+        // console.log(result.data.data);
+        // console.log(result.data.data.result);
+        // console.log(result.data.data.paymentSession.payment_url);
         setIsModalOpen(false);
+        toast.success('Pay 100 taka to confirm rent');
+        window.location.href = result.data.data.paymentSession.payment_url;
         refetch();
       } else {
         toast.error('Bike is not available');
