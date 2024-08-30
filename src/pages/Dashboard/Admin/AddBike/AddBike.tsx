@@ -21,14 +21,22 @@ const AddBike = () => {
   const [createBike, { isLoading }] = useCreateBikeMutation();
 
   const handleAddBike: SubmitHandler<TBike> = async (bikeData) => {
+    const bikeDataWithNumbers = {
+      ...bikeData,
+      pricePerHour: Number(bikeData.pricePerHour),
+      cc: Number(bikeData.cc),
+      year: Number(bikeData.year),
+    };
     try {
-      await createBike(bikeData).unwrap();
+      const result = await createBike(bikeDataWithNumbers).unwrap();
+      console.log(result);
       toast.success('Bike added successfully');
       reset();
     } catch (err) {
       console.log(err);
       toast.error('Failed to add the bike. Please try again.');
     }
+    console.log(bikeData);
   };
 
   if (isLoading) {
