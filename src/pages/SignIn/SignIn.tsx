@@ -31,12 +31,7 @@ const SignIn = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<TUserInput>({
-    defaultValues: {
-      email: 'john@example.com',
-      password: 'password123',
-    },
-  });
+  } = useForm<TUserInput>();
 
   //* login api
   const [login, { isLoading, error }] = useLoginMutation();

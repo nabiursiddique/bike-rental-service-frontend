@@ -16,19 +16,7 @@ const AddBike = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<TBike>({
-    defaultValues: {
-      name: 'Mountain Bike',
-      description: 'A durable mountain bike for rough terrains.',
-      image:
-        'https://images.pexels.com/photos/104842/bmw-vehicle-ride-bike-104842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      pricePerHour: 15,
-      cc: 250,
-      year: 2022,
-      model: 'X1 Carbon',
-      brand: 'Yamaha',
-    },
-  });
+  } = useForm<TBike>();
 
   const [createBike, { isLoading }] = useCreateBikeMutation();
 

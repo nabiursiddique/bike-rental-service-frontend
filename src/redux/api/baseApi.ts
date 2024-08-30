@@ -5,7 +5,8 @@ import { RootState } from '../store';
 // https://bike-rental-reservation-system-backend-coral.vercel.app/api
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:5000/api',
+  baseUrl:
+    'https://bike-rental-reservation-system-backend-coral.vercel.app/api',
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
     if (token) {
