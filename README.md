@@ -1,51 +1,56 @@
-# React + TypeScript + Vite
+# Bike Rental Website Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is a full-stack bike rental website that allows users to rent bikes and manage their rentals. The application has two roles: **User** and **Admin**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Admin Credentials:
 
-## Expanding the ESLint configuration
+- Admin Email: john@example.com
+- Admin Password: password123
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## User Credentials:
 
-- Configure the top-level `parserOptions` property like this:
+- User Email: nabil@gamil.com
+- User Password: password123
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Features
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **User:**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+  - Create an account to rent bikes.
+  - View Profile information.
+  - Update profile information.
+  - View rental history.
+  - Payment option after return bike.
+  - View all bikes and rent from them.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# bike-rental-service-frontend
+- **Admin:**
+  - Profile Edit
+  - Add bikes.
+  - Update and Remove bikes.
+  - View all users, Delete then and change their role.
+  - Return rental bikes
+
+### Technologies Used
+
+- **Frontend:**
+
+  - React
+  - Redux
+  - Tailwind CSS
+  - Shadcn UI
+  - TypeScript
+
+- **Backend:**
+  - Node.js
+  - TypeScript
+  - MongoDB
+  - Mongoose
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or later)
+- MongoDB (local or remote instance)

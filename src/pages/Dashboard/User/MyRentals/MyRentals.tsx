@@ -61,7 +61,7 @@ const MyRentals = () => {
                       </p>
                       <p className='mt-2 text-lg font-bold text-gray-800'>
                         Total:
-                        {rental.totalCost
+                        {rental.totalCost && rental.totalCost > 0
                           ? ` $${rental.totalCost.toFixed(2)}`
                           : ' Pending Calculation'}
                       </p>
